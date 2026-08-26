@@ -18,6 +18,24 @@ enum RolUsuario {
   ADMIN
 }
 
+enum TipoSalario {
+  HORA
+  JORNADA
+  MES
+}
+
+enum EstadoOferta {
+  ACTIVA
+  CERRADA
+}
+
+enum EstadoSolicitud {
+  SOLICITADO
+  VISTO
+  CONTRATADO
+  DESCARTADO
+}
+
 model Usuario {
   id           String     @id @default(cuid())
   email        String     @unique
@@ -41,6 +59,8 @@ model PerfilTrabajador {
 
   usuarioId String  @unique
   usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  solicitudes Solicitud[]
 }
 
 model Empresa {
@@ -52,4 +72,42 @@ model Empresa {
 
   usuarioId String  @unique
   usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  ofertas Oferta[]
+}
+
+model Oferta {
+  id            String       @id @default(cuid())
+  titulo        String
+  oficio        String
+  numeroPuestos Int
+  descripcion   String
+  poblacion     String
+  provincia     String
+  fechaInicio   DateTime
+  duracionDias  Int
+  salario       Decimal      @db.Decimal(10, 2)
+  tipoSalario   TipoSalario
+  estado        EstadoOferta @default(ACTIVA)
+  publicadaEn   DateTime     @default(now())
+
+  empresaId String
+  empresa   Empresa @relation(fields: [empresaId], references: [id])
+
+  solicitudes Solicitud[]
+}
+
+model Solicitud {
+  id       String          @id @default(cuid())
+  mensaje  String?
+  estado   EstadoSolicitud @default(SOLICITADO)
+  creadaEn DateTime        @default(now())
+
+  ofertaId String
+  oferta   Oferta @relation(fields: [ofertaId], references: [id])
+
+  trabajadorId String
+  trabajador   PerfilTrabajador @relation(fields: [trabajadorId], references: [id])
+
+  @@unique([ofertaId, trabajadorId])
 }

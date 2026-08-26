@@ -33,8 +33,16 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             Bolsa Obra
           </Link>
           <nav className="flex items-center gap-4 text-sm">
+            <Link href="/ofertas" className="underline">
+              Ofertas
+            </Link>
             {session?.user ? (
               <>
+                {session.user.role === "EMPRESA" && (
+                  <Link href="/empresa/ofertas" className="underline">
+                    Mis ofertas
+                  </Link>
+                )}
                 <span className="text-gray-600">
                   {session.user.email} ({session.user.role})
                 </span>
