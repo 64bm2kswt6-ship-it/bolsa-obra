@@ -2,7 +2,16 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-6 px-4 py-12 text-center">
+    <div className="relative flex flex-1 flex-col items-center justify-center gap-6 overflow-hidden px-4 py-12 text-center">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 flex select-none flex-col items-center justify-center font-black leading-none"
+        style={{ color: "rgba(20, 20, 20, 0.045)" }}
+      >
+        <span className="text-[19vw] tracking-tighter">BOLSA</span>
+        <span className="text-[19vw] tracking-tighter">OBRA</span>
+      </div>
+
       <h1 className="text-4xl font-semibold">Bolsa Obra</h1>
       <p className="max-w-md text-gray-600">
         La bolsa de trabajo para el sector de la construcción: conecta empresas y
