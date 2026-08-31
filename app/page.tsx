@@ -6,7 +6,7 @@ export default function Home() {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 flex select-none flex-col items-center justify-center font-black leading-none"
-        style={{ color: "rgba(20, 20, 20, 0.045)" }}
+        style={{ color: "rgba(140, 140, 140, 0.13)" }}
       >
         <span className="text-[19vw] tracking-tighter">BOLSA</span>
         <span className="text-[19vw] tracking-tighter">OBRA</span>
