@@ -26,7 +26,7 @@ export default function Home() {
         </Link>
         <Link
           href="/registro"
-          className="rounded border border-gray-300 px-6 py-3 text-sm font-medium text-gray-900"
+          className="rounded bg-[#FFCB05] px-6 py-3 text-sm font-medium text-gray-900"
         >
           Busco trabajadores
         </Link>
