@@ -25,10 +25,15 @@ export default function Home() {
           <span className="text-[19vw] tracking-tighter">BOLSA</span>
           <span className="text-[19vw] tracking-tighter">OBRA</span>
         </div>
-        <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">Bolsa Obra</h1>
+        <span className="inline-block rounded-full border border-gray-300 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gray-500">
+          Bolsa de empleo · Construcción
+        </span>
+        <h1 className="mx-auto mt-5 max-w-3xl text-balance text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+          El trabajo de la construcción, directo y sin intermediarios
+        </h1>
         <p className="mx-auto mt-4 max-w-xl text-lg text-gray-600">
-          La bolsa de trabajo del sector de la construcción: conectamos empresas y
-          trabajadores del oficio, directo y sin complicaciones.
+          Empresas y trabajadores del oficio, conectados en un solo sitio.
+          Publica tu obra o encuentra la tuya.
         </p>
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
           <Link
