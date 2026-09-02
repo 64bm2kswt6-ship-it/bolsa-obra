@@ -68,6 +68,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/ofertas" className="underline">
               Ofertas
             </Link>
+            <Link href="/quienes-somos" className="underline">
+              Quiénes somos
+            </Link>
             {session?.user ? (
               <>
                 {session.user.role === "EMPRESA" && (
@@ -102,6 +105,30 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           </nav>
         </header>
         <main className="flex flex-1 flex-col">{children}</main>
+        <footer className="border-t border-gray-200 bg-gray-50 px-4 py-8 text-sm text-gray-600">
+          <div className="mx-auto flex max-w-5xl flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+            <div className="max-w-xs">
+              <div className="flex items-center gap-2 font-semibold text-gray-900">
+                <svg width="24" height="19" viewBox="0 0 100 80" fill="none" aria-hidden="true">
+                  <path d="M6 54 Q6 47 14 46 L86 46 Q94 47 94 54 Q94 60 86 60 L14 60 Q6 60 6 54 Z" fill="#FFCB05" stroke="#141414" strokeWidth="4" strokeLinejoin="round" />
+                  <path d="M18 48 Q18 18 50 16 Q82 18 82 48 Z" fill="#FFCB05" stroke="#141414" strokeWidth="4" strokeLinejoin="round" />
+                  <path d="M50 16 L50 48 M34 20 L34 48 M66 20 L66 48" stroke="#141414" strokeWidth="3" />
+                </svg>
+                Bolsa Obra
+              </div>
+              <p className="mt-2">La bolsa de trabajo del sector de la construcción.</p>
+            </div>
+            <nav className="flex flex-col gap-2">
+              <span className="font-semibold text-gray-900">Enlaces</span>
+              <Link href="/ofertas" className="hover:underline">Ofertas</Link>
+              <Link href="/quienes-somos" className="hover:underline">Quiénes somos</Link>
+              <Link href="/registro" className="hover:underline">Crear cuenta</Link>
+            </nav>
+          </div>
+          <div className="mx-auto mt-6 max-w-5xl border-t border-gray-200 pt-4 text-xs text-gray-500">
+            © {new Date().getFullYear()} Bolsa Obra
+          </div>
+        </footer>
       </body>
     </html>
   );
