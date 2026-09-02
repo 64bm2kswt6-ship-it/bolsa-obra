@@ -47,6 +47,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Valores */}
+      <section className="border-t border-gray-200 px-4 py-12">
+        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-3">
+          <div className="flex flex-col items-center gap-3 text-center">
+            <span className="flex h-12 w-12 items-center justify-center rounded-full text-gray-900" style={{ backgroundColor: "#FFF3C4" }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 5-7 9-7 9s-7-4-7-9V6z" /><path d="M9 12l2 2 4-4" /></svg>
+            </span>
+            <div>
+              <p className="font-semibold text-gray-900">Solo construcción</p>
+              <p className="mt-1 text-sm text-gray-600">Una bolsa especializada en el sector, no un cajón de sastre.</p>
+            </div>
+          </div>
+          <div className="flex flex-col items-center gap-3 text-center">
+            <span className="flex h-12 w-12 items-center justify-center rounded-full text-gray-900" style={{ backgroundColor: "#FFF3C4" }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+            </span>
+            <div>
+              <p className="font-semibold text-gray-900">Contacto directo</p>
+              <p className="mt-1 text-sm text-gray-600">Empresa y trabajador se conectan directamente, sin intermediarios.</p>
+            </div>
+          </div>
+          <div className="flex flex-col items-center gap-3 text-center">
+            <span className="flex h-12 w-12 items-center justify-center rounded-full text-gray-900" style={{ backgroundColor: "#FFF3C4" }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M14.5 9.5a3 3 0 1 0 0 5M8.5 12h5" /></svg>
+            </span>
+            <div>
+              <p className="font-semibold text-gray-900">Gratis para el trabajador</p>
+              <p className="mt-1 text-sm text-gray-600">Buscar trabajo y solicitar ofertas no te cuesta nada.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Cómo funciona */}
       <section className="border-t border-gray-200 bg-gray-50 px-4 py-16">
         <div className="mx-auto max-w-5xl">
