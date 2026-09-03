@@ -118,12 +118,21 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               </div>
               <p className="mt-2">La bolsa de trabajo del sector de la construcción.</p>
             </div>
-            <nav className="flex flex-col gap-2">
-              <span className="font-semibold text-gray-900">Enlaces</span>
-              <Link href="/ofertas" className="hover:underline">Ofertas</Link>
-              <Link href="/quienes-somos" className="hover:underline">Quiénes somos</Link>
-              <Link href="/registro" className="hover:underline">Crear cuenta</Link>
-            </nav>
+            <div className="flex gap-12">
+              <nav className="flex flex-col gap-2">
+                <span className="font-semibold text-gray-900">Enlaces</span>
+                <Link href="/ofertas" className="hover:underline">Ofertas</Link>
+                <Link href="/quienes-somos" className="hover:underline">Quiénes somos</Link>
+                <Link href="/registro" className="hover:underline">Crear cuenta</Link>
+              </nav>
+              <nav className="flex flex-col gap-2">
+                <span className="font-semibold text-gray-900">Legal</span>
+                <Link href="/aviso-legal" className="hover:underline">Aviso legal</Link>
+                <Link href="/privacidad" className="hover:underline">Privacidad</Link>
+                <Link href="/terminos" className="hover:underline">Términos</Link>
+                <Link href="/cookies" className="hover:underline">Cookies</Link>
+              </nav>
+            </div>
           </div>
           <div className="mx-auto mt-6 max-w-5xl border-t border-gray-200 pt-4 text-xs text-gray-500">
             © {new Date().getFullYear()} Bolsa Obra
