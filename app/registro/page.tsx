@@ -117,6 +117,21 @@ export default function RegistroPage() {
           </>
         )}
 
+        <label className="flex items-start gap-2 text-sm text-gray-600">
+          <input type="checkbox" name="acepto" required className="mt-1" />
+          <span>
+            He leído y acepto la{" "}
+            <Link href="/privacidad" target="_blank" className="underline">
+              Política de Privacidad
+            </Link>{" "}
+            y los{" "}
+            <Link href="/terminos" target="_blank" className="underline">
+              Términos de Uso
+            </Link>
+            .
+          </span>
+        </label>
+
         {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
 
         <button

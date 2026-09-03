@@ -30,6 +30,12 @@ export async function registrar(
     return { error: "Elige si te registras como trabajador o como empresa." };
   }
 
+  if (!campo(formData, "acepto")) {
+    return {
+      error: "Debes aceptar la Política de Privacidad y los Términos de Uso.",
+    };
+  }
+
   const passwordHash = await bcrypt.hash(password, 10);
 
   try {
