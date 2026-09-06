@@ -47,6 +47,7 @@ export default async function OfertaDetallePage(props: PageProps<"/ofertas/[id]"
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-4 py-12">
+      <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
       <div>
         <h1 className="text-2xl font-semibold">{oferta.titulo}</h1>
         <p className="text-sm text-gray-600">
@@ -88,7 +89,7 @@ export default async function OfertaDetallePage(props: PageProps<"/ofertas/[id]"
         <p className="mt-1 text-sm text-gray-600">
           {oferta.poblacion} ({oferta.provincia})
         </p>
-        <div className="mt-2 overflow-hidden rounded-lg border border-gray-200">
+        <div className="mt-2 overflow-hidden rounded-xl border border-gray-200 shadow-sm">
           <iframe
             title={`Mapa de ${oferta.poblacion}`}
             src={`https://maps.google.com/maps?q=${ubicacionQuery}&z=12&output=embed`}
@@ -121,7 +122,7 @@ export default async function OfertaDetallePage(props: PageProps<"/ofertas/[id]"
             <button
               type="button"
               disabled
-              className="rounded bg-gray-200 px-4 py-2 text-sm font-medium text-gray-500"
+              className="rounded-xl bg-gray-200 px-4 py-2.5 text-sm font-medium text-gray-500"
             >
               Ya has solicitado esta oferta
             </button>
@@ -129,6 +130,7 @@ export default async function OfertaDetallePage(props: PageProps<"/ofertas/[id]"
             <SolicitarButton ofertaId={oferta.id} />
           )
         ) : null}
+      </div>
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ function Campo({
         name={id}
         type={type}
         required
-        className="rounded border border-gray-300 px-3 py-2 text-sm"
+        className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
         {...props}
       />
     </div>
@@ -56,7 +56,7 @@ export function NuevaOfertaForm() {
           name="descripcion"
           required
           rows={4}
-          className="rounded border border-gray-300 px-3 py-2 text-sm"
+          className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
         />
       </div>
 
@@ -81,7 +81,7 @@ export function NuevaOfertaForm() {
           name="tipoSalario"
           required
           defaultValue="JORNADA"
-          className="rounded border border-gray-300 px-3 py-2 text-sm"
+          className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
         >
           <option value="HORA">Por hora</option>
           <option value="JORNADA">Por jornada</option>
@@ -94,7 +94,7 @@ export function NuevaOfertaForm() {
       <button
         type="submit"
         disabled={pending}
-        className="rounded bg-gray-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+        className="rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-medium text-white shadow-md shadow-gray-900/10 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:pointer-events-none disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
       >
         {pending ? "Publicando..." : "Publicar oferta"}
       </button>

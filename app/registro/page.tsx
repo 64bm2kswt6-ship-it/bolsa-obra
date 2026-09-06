@@ -25,7 +25,7 @@ function Campo({
         name={id}
         type={type}
         required
-        className="rounded border border-gray-300 px-3 py-2 text-sm"
+        className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
       />
     </div>
   );
@@ -52,7 +52,7 @@ export default function RegistroPage() {
             type="password"
             required
             minLength={8}
-            className="rounded border border-gray-300 px-3 py-2 text-sm"
+            className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
           />
           <span className="text-xs text-gray-500">Mínimo 8 caracteres.</span>
         </div>
@@ -104,7 +104,7 @@ export default function RegistroPage() {
                 type="number"
                 min={0}
                 defaultValue={0}
-                className="rounded border border-gray-300 px-3 py-2 text-sm"
+                className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
               />
             </div>
           </>
@@ -137,7 +137,7 @@ export default function RegistroPage() {
         <button
           type="submit"
           disabled={pending}
-          className="rounded bg-gray-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+          className="rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-medium text-white shadow-md shadow-gray-900/10 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:pointer-events-none disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
         >
           {pending ? "Creando cuenta..." : "Crear cuenta"}
         </button>

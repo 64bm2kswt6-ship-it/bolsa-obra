@@ -23,7 +23,7 @@ export default function LoginPage() {
             name="email"
             type="email"
             required
-            className="rounded border border-gray-300 px-3 py-2 text-sm"
+            className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
           />
         </div>
 
@@ -36,7 +36,7 @@ export default function LoginPage() {
             name="password"
             type="password"
             required
-            className="rounded border border-gray-300 px-3 py-2 text-sm"
+            className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
           />
         </div>
 
@@ -45,7 +45,7 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={pending}
-          className="rounded bg-gray-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+          className="rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-medium text-white shadow-md shadow-gray-900/10 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:pointer-events-none disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
         >
           {pending ? "Entrando..." : "Entrar"}
         </button>
