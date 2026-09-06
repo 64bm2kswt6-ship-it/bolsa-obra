@@ -10,8 +10,18 @@ export default function LoginPage() {
   const [state, formAction, pending] = useActionState(autenticar, estadoInicial);
 
   return (
-    <div className="mx-auto flex min-h-full w-full max-w-sm flex-col justify-center gap-6 px-4 py-12">
-      <h1 className="text-2xl font-semibold">Iniciar sesión</h1>
+    <div className="relative flex min-h-full flex-1 flex-col items-center justify-center overflow-hidden px-4 py-12">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(60% 50% at 20% 10%, rgba(255,203,5,0.14), transparent 60%), radial-gradient(50% 40% at 85% 90%, rgba(20,20,20,0.05), transparent 60%), linear-gradient(180deg, #fffdf5 0%, #ffffff 55%)",
+        }}
+      />
+      <div className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-8 shadow-md">
+      <div className="flex flex-col gap-6">
+      <h1 className="text-2xl font-semibold text-gray-900">Iniciar sesión</h1>
 
       <form action={formAction} className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
@@ -53,10 +63,12 @@ export default function LoginPage() {
 
       <p className="text-sm text-gray-600">
         ¿No tienes cuenta?{" "}
-        <Link href="/registro" className="underline">
+        <Link href="/registro" className="font-medium text-gray-900 underline">
           Regístrate
         </Link>
       </p>
+      </div>
+      </div>
     </div>
   );
 }

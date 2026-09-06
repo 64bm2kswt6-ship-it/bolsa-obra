@@ -14,10 +14,31 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://bolsa-obra.vercel.app";
+const SITE_TITLE = "Bolsa Obra";
+const SITE_DESCRIPTION =
+  "La bolsa de trabajo del sector de la construcción: conecta empresas y trabajadores del oficio. Publica tu obra o encuentra la tuya.";
+
 export const metadata: Metadata = {
-  title: "Bolsa Obra",
-  description:
-    "La bolsa de trabajo del sector de la construcción: conecta empresas y trabajadores del oficio.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: `%s · ${SITE_TITLE}`,
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_TITLE,
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 const navLink =
