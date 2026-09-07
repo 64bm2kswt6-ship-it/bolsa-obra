@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 import { auth, signOut } from "@/auth";
+import HeaderNav from "./components/HeaderNav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,8 +42,10 @@ export const metadata: Metadata = {
   },
 };
 
-const navLink =
-  "text-gray-600 transition-colors hover:text-gray-900";
+async function handleSignOut() {
+  "use server";
+  await signOut({ redirectTo: "/" });
+}
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const session = await auth();
@@ -54,10 +57,10 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 px-4 py-3 shadow-sm backdrop-blur-md">
-          <div className="mx-auto flex max-w-6xl items-center justify-between">
+          <div className="relative mx-auto flex max-w-6xl items-center justify-between">
             <Link
               href="/"
-              className="flex items-center gap-2 font-semibold text-gray-900 transition-transform hover:scale-[1.02]"
+              className="flex shrink-0 items-center gap-2 whitespace-nowrap font-semibold text-gray-900 transition-transform hover:scale-[1.02]"
             >
               <svg
                 width="30"
@@ -92,48 +95,13 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               </svg>
               <span>Bolsa Obra</span>
             </Link>
-            <nav className="flex items-center gap-5 text-sm">
-              <Link href="/ofertas" className={navLink}>
-                Ofertas
-              </Link>
-              <Link href="/quienes-somos" className={navLink}>
-                Quiénes somos
-              </Link>
-              {session?.user ? (
-                <>
-                  {session.user.role === "EMPRESA" && (
-                    <Link href="/empresa/ofertas" className={navLink}>
-                      Mis ofertas
-                    </Link>
-                  )}
-                  <span className="hidden text-gray-500 sm:inline">
-                    {session.user.email} ({session.user.role})
-                  </span>
-                  <form
-                    action={async () => {
-                      "use server";
-                      await signOut({ redirectTo: "/" });
-                    }}
-                  >
-                    <button type="submit" className={navLink}>
-                      Cerrar sesión
-                    </button>
-                  </form>
-                </>
-              ) : (
-                <>
-                  <Link href="/login" className={navLink}>
-                    Iniciar sesión
-                  </Link>
-                  <Link
-                    href="/registro"
-                    className="rounded-full bg-gray-900 px-4 py-1.5 font-medium text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-                  >
-                    Crear cuenta
-                  </Link>
-                </>
-              )}
-            </nav>
+            <HeaderNav
+              loggedIn={!!session?.user}
+              email={session?.user?.email ?? undefined}
+              role={session?.user?.role ?? undefined}
+              isEmpresa={session?.user?.role === "EMPRESA"}
+              onSignOut={handleSignOut}
+            />
           </div>
         </header>
         <main className="flex flex-1 flex-col">{children}</main>

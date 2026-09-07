@@ -42,7 +42,14 @@ export default async function OfertaDetallePage(props: PageProps<"/ofertas/[id]"
     }
   }
 
-  const ubicacionTexto = `${oferta.poblacion}, ${oferta.provincia}, España`;
+  // Evita consultas ambiguas tipo "Valencia, Valencia, España" (ciudad y
+  // provincia con el mismo nombre), que a veces hacen que el mapa apunte a
+  // un punto cercano en vez de al núcleo urbano.
+  const mismaCiudadQueProvincia =
+    oferta.poblacion.trim().toLowerCase() === oferta.provincia.trim().toLowerCase();
+  const ubicacionTexto = mismaCiudadQueProvincia
+    ? `${oferta.poblacion}, España`
+    : `${oferta.poblacion}, ${oferta.provincia}, España`;
   const ubicacionQuery = encodeURIComponent(ubicacionTexto);
 
   return (

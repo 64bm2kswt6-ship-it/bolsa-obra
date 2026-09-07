@@ -44,3 +44,7 @@ next-env.d.ts
 
 # claude code local config
 .claude/
+
+# scripts de arreglo puntual (no forman parte de la app)
+fix-salario.mjs
+run-fix.mjs
