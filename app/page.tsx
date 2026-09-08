@@ -18,23 +18,21 @@ export default function Home() {
     <div className="flex flex-1 flex-col">
       {/* Hero */}
       <section className="relative overflow-hidden px-4 py-20 text-center sm:py-28">
-        {/* Fondo degradado suave, look moderno sin salir del modo claro */}
-        <div
+        {/* Foto real de obra de fondo, con degradado claro encima para que el texto se lea bien */}
+        <img
+          src="/hero-construccion.jpg"
+          alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-20"
-          style={{
-            background:
-              "radial-gradient(60% 50% at 20% 10%, rgba(255,203,5,0.18), transparent 60%), radial-gradient(50% 40% at 85% 20%, rgba(20,20,20,0.06), transparent 60%), linear-gradient(180deg, #fffdf5 0%, #ffffff 55%)",
-          }}
+          className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover object-[center_30%]"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 flex select-none flex-col items-center justify-center font-black leading-none"
-          style={{ color: "rgba(140, 140, 140, 0.1)" }}
-        >
-          <span className="text-[19vw] tracking-tighter">BOLSA</span>
-          <span className="text-[19vw] tracking-tighter">OBRA</span>
-        </div>
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(255,253,245,0.95) 0%, rgba(255,255,255,0.92) 22%, rgba(255,255,255,0.82) 45%, rgba(255,255,255,0.62) 70%, rgba(255,255,255,0.4) 100%)",
+          }}
+        />
 
         <span className="animate-fade-up inline-block rounded-full border border-gray-300 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gray-500 shadow-sm backdrop-blur-sm">
           Bolsa de empleo · Construcción
