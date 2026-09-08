@@ -53,7 +53,7 @@ export default function Privacidad() {
             <Bloque
               titulo="Responsable"
               filas={[
-                ["Titular", "[NOMBRE DEL RESPONSABLE]"],
+                ["Titular", "Carlos Carmona Palet"],
                 ["Correo de contacto", "comven4@gmail.com"],
                 ["Sitio web", "bolsa-obra.vercel.app"],
               ]}

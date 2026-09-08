@@ -19,7 +19,7 @@ export default function Terminos() {
             Los presentes Términos y Condiciones de Uso (en adelante, los
             «Términos») regulan el acceso y la utilización de la plataforma Bolsa
             Obra, accesible en bolsa-obra.vercel.app (en adelante, la
-            «Plataforma»), cuyo titular es <strong>[NOMBRE DEL RESPONSABLE]</strong>
+            «Plataforma»), cuyo titular es <strong>Carlos Carmona Palet</strong>
             {" "}(en adelante, el «Titular»), con correo de contacto
             comven4@gmail.com.
           </p>

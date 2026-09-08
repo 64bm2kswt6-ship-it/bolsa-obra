@@ -15,8 +15,8 @@ export default function AvisoLegal() {
             titular de este sitio web es:
           </p>
           <ul className="mt-2 list-disc pl-5">
-            <li>Responsable: <strong>[NOMBRE DEL RESPONSABLE]</strong></li>
-            <li>Domicilio: [DIRECCIÓN]</li>
+            <li>Responsable: <strong>Carlos Carmona Palet</strong></li>
+            <li>Domicilio: Calle Miguel Hernández, nº 1, 46800 Xàtiva (Valencia)</li>
             <li>Correo de contacto: comven4@gmail.com</li>
             <li>Sitio web: bolsa-obra.vercel.app</li>
           </ul>
