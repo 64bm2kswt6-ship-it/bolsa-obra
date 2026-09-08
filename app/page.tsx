@@ -18,55 +18,61 @@ export default function Home() {
     <div className="flex flex-1 flex-col">
       {/* Hero */}
       <section className="relative overflow-hidden px-4 py-20 text-center sm:py-28">
-        {/* Foto real de obra de fondo, con degradado claro encima para que el texto se lea bien */}
+        {/* Foto real de obra de fondo, con degradado claro encima para que el texto se lea bien.
+            Nada de z-index negativo: en Safari, combinado con el header con backdrop-blur,
+            un z-index negativo puede hacer que la imagen desaparezca. En su lugar, la imagen
+            y el degradado van primero en el documento (capa de fondo) y todo el contenido
+            real va dentro de un contenedor "relative z-10" que siempre pinta por encima. */}
         <img
           src="/hero-construccion.jpg"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover object-[center_30%]"
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[center_30%]"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10"
+          className="pointer-events-none absolute inset-0 z-0"
           style={{
             background:
               "linear-gradient(180deg, rgba(255,253,245,0.95) 0%, rgba(255,255,255,0.92) 22%, rgba(255,255,255,0.82) 45%, rgba(255,255,255,0.62) 70%, rgba(255,255,255,0.4) 100%)",
           }}
         />
 
-        <span className="animate-fade-up inline-block rounded-full border border-gray-300 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gray-500 shadow-sm backdrop-blur-sm">
-          Bolsa de empleo · Construcción
-        </span>
-        <h1
-          className="animate-fade-up mx-auto mt-5 max-w-3xl text-balance text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl"
-          style={{ animationDelay: "80ms" }}
-        >
-          El trabajo de la construcción, directo y sin intermediarios
-        </h1>
-        <p
-          className="animate-fade-up mx-auto mt-4 max-w-xl text-lg text-gray-600"
-          style={{ animationDelay: "160ms" }}
-        >
-          Empresas y trabajadores del oficio, conectados en un solo sitio.
-          Publica tu obra o encuentra la tuya.
-        </p>
-        <div
-          className="animate-fade-up mt-8 flex flex-col justify-center gap-4 sm:flex-row"
-          style={{ animationDelay: "240ms" }}
-        >
-          <Link
-            href="/ofertas"
-            className="rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-gray-900/10 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-gray-900/20 active:translate-y-0"
+        <div className="relative z-10">
+          <span className="animate-fade-up inline-block rounded-full border border-gray-300 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gray-500 shadow-sm backdrop-blur-sm">
+            Bolsa de empleo · Construcción
+          </span>
+          <h1
+            className="animate-fade-up mx-auto mt-5 max-w-3xl text-balance text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl"
+            style={{ animationDelay: "80ms" }}
           >
-            Busco trabajo
-          </Link>
-          <Link
-            href="/registro"
-            className="rounded-xl px-6 py-3 text-sm font-semibold text-gray-900 shadow-md shadow-yellow-500/20 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-yellow-500/30 active:translate-y-0"
-            style={{ backgroundColor: "#FFCB05" }}
+            El trabajo de la construcción, directo y sin intermediarios
+          </h1>
+          <p
+            className="animate-fade-up mx-auto mt-4 max-w-xl text-lg text-gray-600"
+            style={{ animationDelay: "160ms" }}
           >
-            Busco trabajadores
-          </Link>
+            Empresas y trabajadores del oficio, conectados en un solo sitio.
+            Publica tu obra o encuentra la tuya.
+          </p>
+          <div
+            className="animate-fade-up mt-8 flex flex-col justify-center gap-4 sm:flex-row"
+            style={{ animationDelay: "240ms" }}
+          >
+            <Link
+              href="/ofertas"
+              className="rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-gray-900/10 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-gray-900/20 active:translate-y-0"
+            >
+              Busco trabajo
+            </Link>
+            <Link
+              href="/registro"
+              className="rounded-xl px-6 py-3 text-sm font-semibold text-gray-900 shadow-md shadow-yellow-500/20 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-yellow-500/30 active:translate-y-0"
+              style={{ backgroundColor: "#FFCB05" }}
+            >
+              Busco trabajadores
+            </Link>
+          </div>
         </div>
       </section>
 
