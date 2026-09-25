@@ -1,4 +1,4 @@
-export const metadata = { title: "Política de Cookies · Bolsa Obra" };
+export const metadata = { title: "Política de Cookies" };
 
 export default function Cookies() {
   return (

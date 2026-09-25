@@ -1,4 +1,4 @@
-export const metadata = { title: "Aviso Legal · Bolsa Obra" };
+export const metadata = { title: "Aviso Legal" };
 
 export default function AvisoLegal() {
   return (

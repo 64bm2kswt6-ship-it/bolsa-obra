@@ -1,4 +1,4 @@
-export const metadata = { title: "Política de Privacidad · Bolsa Obra" };
+export const metadata = { title: "Política de Privacidad" };
 
 type Fila = [string, string];
 

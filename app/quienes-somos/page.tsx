@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Quiénes somos · Bolsa Obra",
+  title: "Quiénes somos",
   description:
     "Bolsa Obra es la bolsa de trabajo especializada en el sector de la construcción.",
 };

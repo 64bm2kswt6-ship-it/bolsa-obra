@@ -1,4 +1,4 @@
-export const metadata = { title: "Términos y Condiciones · Bolsa Obra" };
+export const metadata = { title: "Términos y Condiciones" };
 
 export default function Terminos() {
   return (
