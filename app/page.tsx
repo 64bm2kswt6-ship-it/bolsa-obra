@@ -2,190 +2,225 @@ import Link from "next/link";
 import Reveal from "./components/Reveal";
 
 const pasosTrabajador = [
-  { n: 1, t: "Regístrate gratis", d: "Crea tu perfil de trabajador en un minuto. Para ti siempre es gratis." },
-  { n: 2, t: "Busca ofertas de tu oficio", d: "Filtra por oficio y por zona y encuentra obra cerca de ti." },
-  { n: 3, t: "Solicita y te contactan", d: "Pulsas \"Solicitar\" y la empresa recibe tu perfil y te llama." },
+  { t: "Regístrate gratis", d: "Crea tu perfil de trabajador en un minuto. Para ti siempre es gratis." },
+  { t: "Busca ofertas de tu oficio", d: "Filtra por oficio y por zona y encuentra obra cerca de ti." },
+  { t: "Solicita y te contactan", d: "Pulsas \"Solicitar\" y la empresa recibe tu perfil y te llama." },
 ];
 
 const pasosEmpresa = [
-  { n: 1, t: "Crea la cuenta de tu empresa", d: "Date de alta como empresa o contratista en unos minutos." },
-  { n: 2, t: "Publica tu oferta de obra", d: "Di qué necesitas: oficio, cuántos, dónde y cuándo empiezas." },
-  { n: 3, t: "Recibe candidatos y contacta", d: "Te avisamos cuando alguien solicita y contactas directamente." },
+  { t: "Crea la cuenta de tu empresa", d: "Date de alta como empresa o contratista en unos minutos." },
+  { t: "Publica tu oferta de obra", d: "Di qué necesitas: oficio, cuántos, dónde y cuándo empiezas." },
+  { t: "Recibe candidatos y contacta", d: "Te avisamos cuando alguien solicita y contactas directamente." },
 ];
+
+const valores = [
+  { t: "Solo construcción", d: "Una bolsa especializada en el sector, no un cajón de sastre." },
+  { t: "Contacto directo", d: "Empresa y trabajador se conectan directamente, sin intermediarios." },
+  { t: "Gratis para el trabajador", d: "Buscar trabajo y solicitar ofertas no te cuesta nada." },
+];
+
+function Flecha() {
+  return (
+    <svg className="flecha" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col">
-      {/* Hero */}
-      <section className="relative overflow-hidden px-4 py-20 text-center sm:py-28">
-        {/* Foto real de obra de fondo, con degradado claro encima para que el texto se lea bien.
-            Nada de z-index negativo: en Safari, combinado con el header con backdrop-blur,
-            un z-index negativo puede hacer que la imagen desaparezca. En su lugar, la imagen
-            y el degradado van primero en el documento (capa de fondo) y todo el contenido
-            real va dentro de un contenedor "relative z-10" que siempre pinta por encima. */}
+    <>
+      {/* Hero: foto real de obra bajo asfalto. La imagen va primero en el
+          documento y el contenido dentro de "relative z-10"; sin z-index
+          negativo (en Safari, con backdrop-blur, hacía desaparecer la foto). */}
+      <section className="on-dark relative isolate overflow-hidden bg-asfalto text-white">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/hero-construccion.jpg"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[center_30%]"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_18%]"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-0"
+          className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(255,253,245,0.95) 0%, rgba(255,255,255,0.92) 22%, rgba(255,255,255,0.82) 45%, rgba(255,255,255,0.62) 70%, rgba(255,255,255,0.4) 100%)",
+              "linear-gradient(90deg, rgba(20,19,15,0.84) 0%, rgba(20,19,15,0.6) 45%, rgba(20,19,15,0.18) 100%)",
           }}
         />
 
-        <div className="relative z-10">
-          <span className="animate-fade-up inline-block rounded-full border border-gray-300 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gray-500 shadow-sm backdrop-blur-sm">
-            Bolsa de empleo · Construcción
-          </span>
-          <h1
-            className="animate-fade-up mx-auto mt-5 max-w-3xl text-balance text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl"
-            style={{ animationDelay: "80ms" }}
-          >
-            El trabajo de la construcción, directo y sin intermediarios
-          </h1>
-          <p
-            className="animate-fade-up mx-auto mt-4 max-w-xl text-lg text-gray-600"
-            style={{ animationDelay: "160ms" }}
-          >
-            Empresas y trabajadores del oficio, conectados en un solo sitio.
-            Publica tu obra o encuentra la tuya.
-          </p>
+        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:py-24 lg:grid-cols-[1.25fr_0.75fr] lg:py-28">
+          <div className="min-w-0">
+            <h1
+              className="entra font-display text-[2.9rem] font-black uppercase leading-[1.2] min-[420px]:text-[3.4rem] sm:text-[5rem] lg:text-[5.5rem]"
+              style={{ ["--i" as string]: 0, textWrap: "balance" }}
+            >
+              El trabajo de la construcción,{" "}
+              <span className="box-decoration-clone bg-obra px-2 text-asfalto">
+                directo y sin intermediarios
+              </span>
+            </h1>
+            <p
+              className="entra mt-9 max-w-xl text-lg leading-relaxed text-gray-200 sm:text-xl"
+              style={{ ["--i" as string]: 2 }}
+            >
+              Empresas y trabajadores del oficio, conectados en un solo sitio.
+              Publica tu obra o encuentra la tuya.
+            </p>
+            <div
+              className="entra mt-9 flex flex-col gap-3 sm:flex-row"
+              style={{ ["--i" as string]: 3 }}
+            >
+              <Link href="/ofertas" className="btn btn-yellow min-h-14 px-7 text-base">
+                Busco trabajo <Flecha />
+              </Link>
+              <Link href="/registro" className="btn btn-line-light min-h-14 px-7 text-base">
+                Busco trabajadores
+              </Link>
+            </div>
+          </div>
+
+          {/* Ficha de ejemplo: enseña lo que se publica y lo que se lee de un vistazo */}
           <div
-            className="animate-fade-up mt-8 flex flex-col justify-center gap-4 sm:flex-row"
-            style={{ animationDelay: "240ms" }}
+            className="entra hidden lg:block"
+            style={{ ["--i" as string]: 4 }}
+            aria-hidden="true"
           >
-            <Link
-              href="/ofertas"
-              className="rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-gray-900/10 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-gray-900/20 active:translate-y-0"
-            >
-              Busco trabajo
-            </Link>
-            <Link
-              href="/registro"
-              className="rounded-xl px-6 py-3 text-sm font-semibold text-gray-900 shadow-md shadow-yellow-500/20 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-yellow-500/30 active:translate-y-0"
-              style={{ backgroundColor: "#FFCB05" }}
-            >
-              Busco trabajadores
-            </Link>
+            <div className="rounded-2xl bg-white p-5 text-asfalto shadow-[0_30px_60px_-24px_rgba(0,0,0,0.7)]">
+              <div className="flex items-center justify-between gap-3">
+                <span className="rounded-md bg-asfalto px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-obra">
+                  Encofrador
+                </span>
+                <span className="text-xs font-semibold text-gray-500">
+                  Ejemplo de oferta
+                </span>
+              </div>
+              <p className="font-display mt-4 text-[2rem] font-extrabold uppercase leading-none">
+                Oficial de 1.ª encofrador
+              </p>
+              <p className="mt-1.5 text-sm text-gray-600">Xàtiva (Valencia)</p>
+              <dl className="mt-5 grid grid-cols-3 divide-x divide-gray-200 border-y border-gray-200 text-center">
+                {[
+                  ["Puestos", "3"],
+                  ["Duración", "120 d."],
+                  ["Inicio", "Lunes"],
+                ].map(([k, v]) => (
+                  <div key={k} className="py-3">
+                    <dt className="text-[0.7rem] font-semibold uppercase tracking-wide text-gray-500">
+                      {k}
+                    </dt>
+                    <dd className="font-display mt-0.5 text-2xl font-extrabold">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div className="mt-4 flex items-center justify-between">
+                <span className="font-display num text-3xl font-black">
+                  2.200 €<span className="text-base font-bold text-gray-500">/mes</span>
+                </span>
+                <span className="btn btn-yellow btn-sm pointer-events-none">Solicitar</span>
+              </div>
+            </div>
           </div>
         </div>
+        <div className="cinta cinta-viva relative z-10" aria-hidden="true" />
       </section>
 
-      {/* Valores */}
-      <section className="border-t border-gray-200 px-4 py-14">
-        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-3">
-          <Reveal className="flex flex-col items-center gap-3 text-center" delay={0}>
-            <span
-              className="flex h-12 w-12 items-center justify-center rounded-full text-gray-900 shadow-sm shadow-yellow-500/30 transition-transform hover:scale-110"
-              style={{ backgroundColor: "#FFF3C4" }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 5-7 9-7 9s-7-4-7-9V6z" /><path d="M9 12l2 2 4-4" /></svg>
-            </span>
-            <div>
-              <p className="font-semibold text-gray-900">Solo construcción</p>
-              <p className="mt-1 text-sm text-gray-600">Una bolsa especializada en el sector, no un cajón de sastre.</p>
-            </div>
-          </Reveal>
-          <Reveal className="flex flex-col items-center gap-3 text-center" delay={100}>
-            <span
-              className="flex h-12 w-12 items-center justify-center rounded-full text-gray-900 shadow-sm shadow-yellow-500/30 transition-transform hover:scale-110"
-              style={{ backgroundColor: "#FFF3C4" }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
-            </span>
-            <div>
-              <p className="font-semibold text-gray-900">Contacto directo</p>
-              <p className="mt-1 text-sm text-gray-600">Empresa y trabajador se conectan directamente, sin intermediarios.</p>
-            </div>
-          </Reveal>
-          <Reveal className="flex flex-col items-center gap-3 text-center" delay={200}>
-            <span
-              className="flex h-12 w-12 items-center justify-center rounded-full text-gray-900 shadow-sm shadow-yellow-500/30 transition-transform hover:scale-110"
-              style={{ backgroundColor: "#FFF3C4" }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M14.5 9.5a3 3 0 1 0 0 5M8.5 12h5" /></svg>
-            </span>
-            <div>
-              <p className="font-semibold text-gray-900">Gratis para el trabajador</p>
-              <p className="mt-1 text-sm text-gray-600">Buscar trabajo y solicitar ofertas no te cuesta nada.</p>
-            </div>
-          </Reveal>
-        </div>
+      {/* Valores: tres frases, sin tarjetas */}
+      <section className="px-4 py-16 sm:py-20">
+        <ul className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3 md:gap-0 md:divide-x md:divide-gray-300">
+          {valores.map((v, i) => (
+            <li key={v.t} className="md:px-8 md:first:pl-0 md:last:pr-0">
+              <Reveal delay={i * 70}>
+                <h2 className="font-display text-4xl font-extrabold uppercase leading-none sm:text-[2.6rem]">
+                  {v.t}
+                </h2>
+                <p className="mt-3 max-w-xs text-base leading-relaxed text-gray-600">{v.d}</p>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      {/* Cómo funciona */}
-      <section className="border-t border-gray-200 bg-gray-50 px-4 py-16">
-        <div className="mx-auto max-w-5xl">
+      {/* Cómo funciona: los dos lados de la obra */}
+      <section className="px-4 pb-16 sm:pb-24">
+        <div className="mx-auto max-w-6xl">
           <Reveal>
-            <h2 className="text-center text-2xl font-bold text-gray-900 sm:text-3xl">
+            <h2 className="font-display text-5xl font-black uppercase leading-none sm:text-6xl">
               Cómo funciona
             </h2>
-            <p className="mx-auto mt-2 max-w-xl text-center text-gray-600">
+            <p className="mt-3 max-w-xl text-lg text-gray-600">
               Sencillo para los dos lados de la obra.
             </p>
           </Reveal>
 
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            <Reveal delay={0}>
-              <div className="h-full rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-                <h3 className="text-lg font-bold text-gray-900">Si buscas trabajo</h3>
-                <ol className="mt-4 flex flex-col gap-5">
-                  {pasosTrabajador.map((p) => (
-                    <li key={p.n} className="flex gap-4">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gray-900 text-sm font-bold text-white">
-                        {p.n}
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+            <Reveal className="h-full">
+              <div className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 sm:p-9">
+                <h3 className="font-display text-3xl font-extrabold uppercase">Si buscas trabajo</h3>
+                <ol className="mt-7 flex flex-1 flex-col gap-6">
+                  {pasosTrabajador.map((p, i) => (
+                    <li key={p.t} className="flex gap-5">
+                      <span className="font-display num w-9 shrink-0 text-5xl font-black leading-[0.85] text-obra [-webkit-text-stroke:2px_var(--asfalto)]">
+                        {i + 1}
                       </span>
                       <div>
-                        <p className="font-semibold text-gray-900">{p.t}</p>
-                        <p className="text-sm text-gray-600">{p.d}</p>
+                        <p className="text-lg font-bold">{p.t}</p>
+                        <p className="mt-0.5 text-base text-gray-600">{p.d}</p>
                       </div>
                     </li>
                   ))}
                 </ol>
-                <Link
-                  href="/ofertas"
-                  className="mt-6 inline-block text-sm font-semibold text-gray-900 underline decoration-gray-300 underline-offset-4 transition-colors hover:decoration-gray-900"
-                >
-                  Ver ofertas →
+                <Link href="/ofertas" className="btn btn-dark mt-9 self-start">
+                  Ver ofertas <Flecha />
                 </Link>
               </div>
             </Reveal>
 
-            <Reveal delay={120}>
-              <div className="h-full rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-                <h3 className="text-lg font-bold text-gray-900">Si buscas trabajadores</h3>
-                <ol className="mt-4 flex flex-col gap-5">
-                  {pasosEmpresa.map((p) => (
-                    <li key={p.n} className="flex gap-4">
-                      <span
-                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold text-gray-900"
-                        style={{ backgroundColor: "#FFCB05" }}
-                      >
-                        {p.n}
+            <Reveal delay={90} className="h-full">
+              <div className="on-dark flex h-full flex-col rounded-2xl bg-asfalto p-6 text-white sm:p-9">
+                <h3 className="font-display text-3xl font-extrabold uppercase">Si buscas trabajadores</h3>
+                <ol className="mt-7 flex flex-1 flex-col gap-6">
+                  {pasosEmpresa.map((p, i) => (
+                    <li key={p.t} className="flex gap-5">
+                      <span className="font-display num w-9 shrink-0 text-5xl font-black leading-[0.85] text-obra">
+                        {i + 1}
                       </span>
                       <div>
-                        <p className="font-semibold text-gray-900">{p.t}</p>
-                        <p className="text-sm text-gray-600">{p.d}</p>
+                        <p className="text-lg font-bold">{p.t}</p>
+                        <p className="mt-0.5 text-base text-gray-300">{p.d}</p>
                       </div>
                     </li>
                   ))}
                 </ol>
-                <Link
-                  href="/registro"
-                  className="mt-6 inline-block text-sm font-semibold text-gray-900 underline decoration-gray-300 underline-offset-4 transition-colors hover:decoration-gray-900"
-                >
-                  Publicar una oferta →
+                <Link href="/registro" className="btn btn-yellow mt-9 self-start">
+                  Publicar una oferta <Flecha />
                 </Link>
               </div>
             </Reveal>
           </div>
         </div>
       </section>
-    </div>
+
+      {/* Cierre: el amarillo ocupa la página */}
+      <section className="bg-obra px-4 py-16 text-asfalto sm:py-24">
+        <Reveal className="mx-auto flex max-w-6xl flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <h2
+            className="font-display max-w-3xl text-[3rem] font-black uppercase leading-[0.92] sm:text-7xl"
+            style={{ textWrap: "balance" }}
+          >
+            ¿Empiezas obra el lunes? Publícala hoy.
+          </h2>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link href="/registro" className="btn btn-dark min-h-14 px-7 text-base">
+              Crear cuenta <Flecha />
+            </Link>
+            <Link href="/ofertas" className="btn btn-line min-h-14 px-7 text-base">
+              Ver ofertas
+            </Link>
+          </div>
+        </Reveal>
+      </section>
+    </>
   );
 }

@@ -15,9 +15,10 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          borderTop: "28px solid #ffcb05",
+          borderBottom: "28px solid #ffcb05",
           justifyContent: "center",
-          background:
-            "radial-gradient(60% 60% at 18% 15%, rgba(255,203,5,0.35) 0%, rgba(255,203,5,0) 60%), linear-gradient(180deg, #ffffff 0%, #fff8e1 100%)",
+          background: "#14130f",
           fontFamily: "Arial, Helvetica, sans-serif",
         }}
       >
@@ -41,7 +42,7 @@ export default async function Image() {
               strokeWidth="3"
             />
           </svg>
-          <span style={{ fontSize: 84, fontWeight: 800, color: "#141414" }}>
+          <span style={{ fontSize: 92, fontWeight: 800, color: "#ffffff", textTransform: "uppercase" }}>
             Bolsa Obra
           </span>
         </div>
@@ -49,7 +50,7 @@ export default async function Image() {
           style={{
             marginTop: 28,
             fontSize: 34,
-            color: "#4b5563",
+            color: "#ffcb05",
             maxWidth: 820,
             textAlign: "center",
           }}

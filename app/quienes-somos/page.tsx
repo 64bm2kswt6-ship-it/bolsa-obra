@@ -9,15 +9,12 @@ export const metadata = {
 export default function QuienesSomos() {
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-16">
-      <span className="inline-block rounded-full border border-gray-300 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gray-500 shadow-sm">
-        Bolsa de empleo · Construcción
-      </span>
-      <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+      <h1 className="font-display text-6xl font-black uppercase leading-none sm:text-7xl">
         Quiénes somos
       </h1>
 
-      <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
-        <div className="flex flex-col gap-5 leading-relaxed text-gray-700">
+      <div className="ficha mt-8 overflow-hidden"><div className="cinta" aria-hidden="true" style={{ height: 8 }} /><div className="p-6 sm:p-9">
+        <div className="flex flex-col gap-5 text-lg leading-relaxed text-gray-700">
           <p>
             Bolsa Obra nace para resolver algo que en la construcción se sigue
             haciendo demasiado a la antigua: encontrar mano de obra y encontrar
@@ -46,19 +43,18 @@ export default function QuienesSomos() {
             esta es tu bolsa.
           </p>
         </div>
-      </div>
+      </div></div>
 
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
         <Link
           href="/ofertas"
-          className="rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-gray-900/10 transition-all hover:-translate-y-0.5 hover:shadow-lg"
+          className="btn btn-dark"
         >
           Ver ofertas
         </Link>
         <Link
           href="/registro"
-          className="rounded-xl px-6 py-3 text-sm font-semibold text-gray-900 shadow-md shadow-yellow-500/20 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-yellow-500/30"
-          style={{ backgroundColor: "#FFCB05" }}
+          className="btn btn-yellow"
         >
           Crear cuenta
         </Link>

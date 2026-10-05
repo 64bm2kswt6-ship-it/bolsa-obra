@@ -53,92 +53,108 @@ export default async function OfertaDetallePage(props: PageProps<"/ofertas/[id]"
   const ubicacionQuery = encodeURIComponent(ubicacionTexto);
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-4 py-12">
-      <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
-      <div>
-        <h1 className="text-2xl font-semibold">{oferta.titulo}</h1>
-        <p className="text-sm text-gray-600">
-          {oferta.oficio} · {oferta.poblacion} ({oferta.provincia})
-        </p>
-      </div>
+    <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:py-12">
+      <Link
+        href="/ofertas"
+        className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+        Todas las ofertas
+      </Link>
 
-      <dl className="grid grid-cols-2 gap-4 text-sm text-gray-600 sm:grid-cols-3">
-        <div>
-          <dt className="text-xs text-gray-400">Puestos</dt>
-          <dd>{oferta.numeroPuestos}</dd>
-        </div>
-        <div>
-          <dt className="text-xs text-gray-400">Inicio</dt>
-          <dd>{formatoFecha.format(oferta.fechaInicio)}</dd>
-        </div>
-        <div>
-          <dt className="text-xs text-gray-400">Duración</dt>
-          <dd>{oferta.duracionDias} días</dd>
-        </div>
-        <div>
-          <dt className="text-xs text-gray-400">Salario</dt>
-          <dd>
-            {formatoMoneda.format(Number(oferta.salario))}
-            {etiquetaTipoSalario[oferta.tipoSalario]}
-          </dd>
-        </div>
-      </dl>
+      <article className="ficha mt-3 overflow-hidden">
+        <div className="cinta" aria-hidden="true" style={{ height: 8 }} />
+        <div className="p-6 sm:p-9">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-md bg-asfalto px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-obra">
+              {oferta.oficio}
+            </span>
+            <span className="text-sm font-semibold text-gray-600">
+              {oferta.poblacion} ({oferta.provincia})
+            </span>
+          </div>
+          <h1
+            className="font-display mt-3 text-5xl font-black uppercase leading-[0.95] sm:text-6xl"
+            style={{ textWrap: "balance" }}
+          >
+            {oferta.titulo}
+          </h1>
 
-      <div>
-        <h2 className="text-sm font-medium text-gray-700">Descripción</h2>
-        <p className="mt-1 whitespace-pre-line text-sm text-gray-600">
-          {oferta.descripcion}
-        </p>
-      </div>
+          <dl className="mt-7 grid grid-cols-2 border-y-2 border-asfalto sm:grid-cols-4 sm:divide-x sm:divide-gray-300">
+            {[
+              ["Puestos", String(oferta.numeroPuestos)],
+              ["Empieza", formatoFecha.format(oferta.fechaInicio)],
+              ["Duración", `${oferta.duracionDias} días`],
+              [
+                "Salario",
+                `${formatoMoneda.format(Number(oferta.salario))}${etiquetaTipoSalario[oferta.tipoSalario]}`,
+              ],
+            ].map(([k, v], i) => (
+              <div
+                key={k}
+                className={`py-4 sm:px-4 sm:first:pl-0 ${i % 2 === 1 ? "pl-4 sm:pl-4" : ""} ${i > 1 ? "border-t border-gray-300 sm:border-t-0" : ""}`}
+              >
+                <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">{k}</dt>
+                <dd className="font-display num mt-1 text-[1.7rem] font-extrabold leading-none">{v}</dd>
+              </div>
+            ))}
+          </dl>
 
-      <div>
-        <h2 className="text-sm font-medium text-gray-700">Ubicación</h2>
-        <p className="mt-1 text-sm text-gray-600">
-          {oferta.poblacion} ({oferta.provincia})
-        </p>
-        <div className="mt-2 overflow-hidden rounded-xl border border-gray-200 shadow-sm">
-          <iframe
-            title={`Mapa de ${oferta.poblacion}`}
-            src={`https://maps.google.com/maps?q=${ubicacionQuery}&z=12&output=embed`}
-            width="100%"
-            height="260"
-            loading="lazy"
-            style={{ border: 0 }}
-          />
-        </div>
-        <a
-          href={`https://www.google.com/maps/search/?api=1&query=${ubicacionQuery}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-2 inline-block text-sm text-gray-900 underline"
-        >
-          Abrir en Google Maps
-        </a>
-      </div>
+          <section className="mt-8">
+            <h2 className="font-display text-2xl font-extrabold uppercase">Descripción</h2>
+            <p className="mt-2 max-w-[68ch] whitespace-pre-line text-base leading-relaxed text-gray-700">
+              {oferta.descripcion}
+            </p>
+          </section>
 
-      <div className="border-t border-gray-200 pt-6">
-        {!session?.user ? (
-          <p className="text-sm text-gray-600">
-            <Link href="/registro" className="underline">
-              Regístrate
-            </Link>{" "}
-            como trabajador para solicitar esta oferta.
-          </p>
-        ) : esTrabajador ? (
-          yaSolicitada ? (
-            <button
-              type="button"
-              disabled
-              className="rounded-xl bg-gray-200 px-4 py-2.5 text-sm font-medium text-gray-500"
+          <section className="mt-8">
+            <h2 className="font-display text-2xl font-extrabold uppercase">Ubicación</h2>
+            <p className="mt-1 text-base text-gray-700">
+              {oferta.poblacion} ({oferta.provincia})
+            </p>
+            <div className="mt-3 overflow-hidden rounded-xl border border-gray-300">
+              <iframe
+                title={`Mapa de ${oferta.poblacion}`}
+                src={`https://maps.google.com/maps?q=${ubicacionQuery}&z=12&output=embed`}
+                width="100%"
+                height="260"
+                loading="lazy"
+                style={{ border: 0 }}
+              />
+            </div>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${ubicacionQuery}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex min-h-10 items-center text-sm font-semibold underline decoration-2 underline-offset-4 hover:decoration-obra"
             >
-              Ya has solicitado esta oferta
-            </button>
-          ) : (
-            <SolicitarButton ofertaId={oferta.id} />
-          )
-        ) : null}
-      </div>
-      </div>
+              Abrir en Google Maps
+            </a>
+          </section>
+
+          <div className="mt-8 border-t border-gray-300 pt-7">
+            {!session?.user ? (
+              <p className="text-base text-gray-700">
+                <Link
+                  href="/registro"
+                  className="font-bold underline decoration-obra decoration-4 underline-offset-4"
+                >
+                  Regístrate
+                </Link>{" "}
+                como trabajador para solicitar esta oferta.
+              </p>
+            ) : esTrabajador ? (
+              yaSolicitada ? (
+                <button type="button" disabled className="btn bg-gray-200 text-gray-600">
+                  Ya has solicitado esta oferta
+                </button>
+              ) : (
+                <SolicitarButton ofertaId={oferta.id} />
+              )
+            ) : null}
+          </div>
+        </div>
+      </article>
     </div>
   );
 }

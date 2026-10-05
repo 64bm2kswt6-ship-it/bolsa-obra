@@ -17,7 +17,7 @@ function Campo({
 }) {
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor={id} className="text-sm font-medium text-gray-700">
+      <label htmlFor={id} className="text-sm font-bold text-gray-800">
         {label}
       </label>
       <input
@@ -25,7 +25,7 @@ function Campo({
         name={id}
         type={type}
         required
-        className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
+        className="campo"
       />
     </div>
   );
@@ -36,24 +36,17 @@ export default function RegistroPage() {
   const [state, formAction, pending] = useActionState(registrar, estadoInicial);
 
   return (
-    <div className="relative flex min-h-full flex-1 flex-col items-center justify-center overflow-hidden px-4 py-12">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(60% 50% at 20% 10%, rgba(255,203,5,0.14), transparent 60%), radial-gradient(50% 40% at 85% 90%, rgba(20,20,20,0.05), transparent 60%), linear-gradient(180deg, #fffdf5 0%, #ffffff 55%)",
-        }}
-      />
-      <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-8 shadow-md">
-      <div className="flex flex-col gap-6">
-      <h1 className="text-2xl font-semibold text-gray-900">Crear cuenta</h1>
+    <div className="flex flex-1 flex-col items-center justify-center px-4 py-10 sm:py-16">
+      <div className="ficha w-full max-w-md overflow-hidden">
+      <div className="cinta" aria-hidden="true" style={{ height: 8 }} />
+      <div className="flex flex-col gap-6 p-6 sm:p-8">
+      <h1 className="font-display text-5xl font-black uppercase leading-none">Crear cuenta</h1>
 
       <form action={formAction} className="flex flex-col gap-4">
         <Campo id="email" label="Email" type="email" />
 
         <div className="flex flex-col gap-1">
-          <label htmlFor="password" className="text-sm font-medium text-gray-700">
+          <label htmlFor="password" className="text-sm font-bold text-gray-800">
             Contraseña
           </label>
           <input
@@ -62,31 +55,45 @@ export default function RegistroPage() {
             type="password"
             required
             minLength={8}
-            className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
+            className="campo"
           />
-          <span className="text-xs text-gray-500">Mínimo 8 caracteres.</span>
+          <span className="text-sm text-gray-600">Mínimo 8 caracteres.</span>
         </div>
 
         <fieldset className="flex flex-col gap-2">
-          <legend className="text-sm font-medium text-gray-700">Soy...</legend>
-          <div className="flex gap-4 text-sm">
-            <label className="flex items-center gap-2">
+          <legend className="text-sm font-bold text-gray-800">Soy...</legend>
+          <div className="grid grid-cols-2 gap-3">
+            <label
+              className={`flex min-h-12 cursor-pointer items-center justify-center rounded-[10px] border-2 text-base font-bold transition-[background-color,border-color,color,transform] duration-150 active:scale-[0.98] has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-offset-2 ${
+                rol === "TRABAJADOR"
+                  ? "border-asfalto bg-asfalto text-obra"
+                  : "border-gray-300 bg-white text-gray-700 hover:border-asfalto"
+              }`}
+            >
               <input
                 type="radio"
                 name="rol"
                 value="TRABAJADOR"
                 checked={rol === "TRABAJADOR"}
                 onChange={() => setRol("TRABAJADOR")}
+                className="sr-only"
               />
               Trabajador
             </label>
-            <label className="flex items-center gap-2">
+            <label
+              className={`flex min-h-12 cursor-pointer items-center justify-center rounded-[10px] border-2 text-base font-bold transition-[background-color,border-color,color,transform] duration-150 active:scale-[0.98] has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-offset-2 ${
+                rol === "EMPRESA"
+                  ? "border-asfalto bg-asfalto text-obra"
+                  : "border-gray-300 bg-white text-gray-700 hover:border-asfalto"
+              }`}
+            >
               <input
                 type="radio"
                 name="rol"
                 value="EMPRESA"
                 checked={rol === "EMPRESA"}
                 onChange={() => setRol("EMPRESA")}
+                className="sr-only"
               />
               Empresa
             </label>
@@ -104,7 +111,7 @@ export default function RegistroPage() {
             <div className="flex flex-col gap-1">
               <label
                 htmlFor="aniosExperiencia"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-bold text-gray-800"
               >
                 Años de experiencia
               </label>
@@ -114,7 +121,7 @@ export default function RegistroPage() {
                 type="number"
                 min={0}
                 defaultValue={0}
-                className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
+                className="campo"
               />
             </div>
           </>
@@ -128,7 +135,7 @@ export default function RegistroPage() {
         )}
 
         <label className="flex items-start gap-2 text-sm text-gray-600">
-          <input type="checkbox" name="acepto" required className="mt-1" />
+          <input type="checkbox" name="acepto" required className="mt-1 h-5 w-5 shrink-0" />
           <span>
             He leído y acepto la{" "}
             <Link href="/privacidad" target="_blank" className="underline">
@@ -142,12 +149,12 @@ export default function RegistroPage() {
           </span>
         </label>
 
-        {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
+        {state?.error && <p className="rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-800" role="alert">{state.error}</p>}
 
         <button
           type="submit"
           disabled={pending}
-          className="rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-medium text-white shadow-md shadow-gray-900/10 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:pointer-events-none disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
+          className="btn btn-dark mt-1 w-full"
         >
           {pending ? "Creando cuenta..." : "Crear cuenta"}
         </button>
@@ -155,7 +162,7 @@ export default function RegistroPage() {
 
       <p className="text-sm text-gray-600">
         ¿Ya tienes cuenta?{" "}
-        <Link href="/login" className="font-medium text-gray-900 underline">
+        <Link href="/login" className="font-bold underline decoration-2 underline-offset-4 hover:decoration-obra">
           Inicia sesión
         </Link>
       </p>

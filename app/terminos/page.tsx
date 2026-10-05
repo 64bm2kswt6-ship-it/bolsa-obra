@@ -2,8 +2,8 @@ export const metadata = { title: "Términos y Condiciones" };
 
 export default function Terminos() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-12">
-      <h1 className="text-3xl font-bold text-gray-900">
+    <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:py-14">
+      <h1 className="font-display text-5xl font-black uppercase leading-none sm:text-6xl">
         Términos y Condiciones de Uso
       </h1>
       <p className="mt-2 text-sm text-gray-500">
@@ -12,7 +12,7 @@ export default function Terminos() {
 
       <div className="mt-8 flex flex-col gap-7 leading-relaxed text-gray-700">
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             1. Información general y aceptación
           </h2>
           <p className="mt-2">
@@ -34,7 +34,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">2. Definiciones</h2>
+          <h2 className="font-display text-2xl font-extrabold uppercase">2. Definiciones</h2>
           <ul className="mt-2 list-disc space-y-1 pl-5">
             <li><strong>Plataforma:</strong> el sitio web Bolsa Obra y los servicios que ofrece.</li>
             <li><strong>Usuario:</strong> toda persona física o jurídica que accede o se registra en la Plataforma.</li>
@@ -46,7 +46,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             3. Objeto y naturaleza del servicio
           </h2>
           <p className="mt-2">
@@ -67,7 +67,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             4. Registro y cuenta de Usuario
           </h2>
           <ul className="mt-2 list-disc space-y-1 pl-5">
@@ -80,7 +80,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             5. Obligaciones de las Empresas
           </h2>
           <ul className="mt-2 list-disc space-y-1 pl-5">
@@ -93,7 +93,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             6. Obligaciones de los Trabajadores
           </h2>
           <ul className="mt-2 list-disc space-y-1 pl-5">
@@ -104,7 +104,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             7. Normas de conducta y usos prohibidos
           </h2>
           <p className="mt-2">Queda expresamente prohibido:</p>
@@ -124,7 +124,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             8. Contenido publicado por los Usuarios
           </h2>
           <p className="mt-2">
@@ -142,7 +142,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             9. Propiedad intelectual e industrial
           </h2>
           <p className="mt-2">
@@ -156,7 +156,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             10. Protección de datos
           </h2>
           <p className="mt-2">
@@ -167,7 +167,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             11. Condiciones económicas
           </h2>
           <p className="mt-2">
@@ -181,7 +181,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             12. Exclusión de garantías y limitación de responsabilidad
           </h2>
           <p className="mt-2">
@@ -203,7 +203,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">13. Indemnidad</h2>
+          <h2 className="font-display text-2xl font-extrabold uppercase">13. Indemnidad</h2>
           <p className="mt-2">
             El Usuario se compromete a mantener indemne al Titular frente a
             cualquier reclamación, sanción o perjuicio derivado del incumplimiento
@@ -212,7 +212,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             14. Suspensión, cancelación y baja
           </h2>
           <p className="mt-2">
@@ -224,7 +224,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             15. Modificación de los Términos y del servicio
           </h2>
           <p className="mt-2">
@@ -237,7 +237,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             16. Enlaces a terceros
           </h2>
           <p className="mt-2">
@@ -248,7 +248,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             17. Nulidad parcial
           </h2>
           <p className="mt-2">
@@ -258,7 +258,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="font-display text-2xl font-extrabold uppercase">
             18. Ley aplicable y jurisdicción
           </h2>
           <p className="mt-2">
@@ -271,7 +271,7 @@ export default function Terminos() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900">19. Contacto</h2>
+          <h2 className="font-display text-2xl font-extrabold uppercase">19. Contacto</h2>
           <p className="mt-2">
             Para cualquier duda o consulta relativa a estos Términos, puedes
             escribir a comven4@gmail.com.

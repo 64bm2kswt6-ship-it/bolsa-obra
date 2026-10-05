@@ -17,7 +17,7 @@ function Campo({
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "id" | "name" | "type">) {
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor={id} className="text-sm font-medium text-gray-700">
+      <label htmlFor={id} className="text-sm font-bold text-gray-800">
         {label}
       </label>
       <input
@@ -25,7 +25,7 @@ function Campo({
         name={id}
         type={type}
         required
-        className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
+        className="campo"
         {...props}
       />
     </div>
@@ -48,7 +48,7 @@ export function NuevaOfertaForm() {
       />
 
       <div className="flex flex-col gap-1">
-        <label htmlFor="descripcion" className="text-sm font-medium text-gray-700">
+        <label htmlFor="descripcion" className="text-sm font-bold text-gray-800">
           Descripción
         </label>
         <textarea
@@ -56,7 +56,7 @@ export function NuevaOfertaForm() {
           name="descripcion"
           required
           rows={4}
-          className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
+          className="campo"
         />
       </div>
 
@@ -73,7 +73,7 @@ export function NuevaOfertaForm() {
       <Campo id="salario" label="Salario" type="number" min={0} step="0.01" />
 
       <div className="flex flex-col gap-1">
-        <label htmlFor="tipoSalario" className="text-sm font-medium text-gray-700">
+        <label htmlFor="tipoSalario" className="text-sm font-bold text-gray-800">
           Tipo de salario
         </label>
         <select
@@ -81,7 +81,7 @@ export function NuevaOfertaForm() {
           name="tipoSalario"
           required
           defaultValue="JORNADA"
-          className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none transition-shadow focus:border-gray-900 focus:shadow-sm"
+          className="campo"
         >
           <option value="HORA">Por hora</option>
           <option value="JORNADA">Por jornada</option>
@@ -89,12 +89,12 @@ export function NuevaOfertaForm() {
         </select>
       </div>
 
-      {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
+      {state?.error && <p className="rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-800" role="alert">{state.error}</p>}
 
       <button
         type="submit"
         disabled={pending}
-        className="rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-medium text-white shadow-md shadow-gray-900/10 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:pointer-events-none disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
+        className="btn btn-dark mt-1 w-full"
       >
         {pending ? "Publicando..." : "Publicar oferta"}
       </button>

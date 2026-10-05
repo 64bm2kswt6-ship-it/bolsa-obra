@@ -14,7 +14,7 @@ export function SolicitarButton({ ofertaId }: { ofertaId: string }) {
       <button
         type="button"
         disabled
-        className="rounded-xl bg-gray-200 px-4 py-2.5 text-sm font-medium text-gray-500"
+        className="btn bg-gray-200 text-gray-600"
       >
         Ya has solicitado esta oferta
       </button>
@@ -26,12 +26,12 @@ export function SolicitarButton({ ofertaId }: { ofertaId: string }) {
       <button
         type="submit"
         disabled={pending}
-        className="rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-medium text-white shadow-md shadow-gray-900/10 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:pointer-events-none disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
+        className="btn btn-yellow w-full sm:w-auto sm:min-w-56"
       >
         {pending ? "Enviando..." : "Solicitar"}
       </button>
       {state && "error" in state && (
-        <p className="text-sm text-red-600">{state.error}</p>
+        <p className="rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-800" role="alert">{state.error}</p>
       )}
     </form>
   );

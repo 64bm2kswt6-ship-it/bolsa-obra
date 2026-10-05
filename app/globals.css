@@ -1,39 +1,353 @@
 @import "tailwindcss";
 
+/* Mundo visual: señalización de obra.
+   Amarillo de seguridad + asfalto sobre hormigón claro. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --obra: #ffcb05;
+  --obra-hover: #ffd633;
+  --asfalto: #14130f;
+  --hormigon: #eeeeea;
+  --background: var(--hormigon);
+  --foreground: var(--asfalto);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   color-scheme: light;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-obra: var(--obra);
+  --color-obra-hover: var(--obra-hover);
+  --color-asfalto: var(--asfalto);
+  --color-hormigon: var(--hormigon);
+  --font-sans: var(--font-archivo);
+  --font-display: var(--font-bigshoulders);
+}
+
+/* Escala de grises neutra-cálida, derivada del asfalto: todas las páginas
+   que usan gray-* heredan el mundo sin tocarlas. */
+@theme {
+  --color-gray-50: #f6f6f3;
+  --color-gray-100: #ebebe7;
+  --color-gray-200: #dcdcd6;
+  --color-gray-300: #c4c4bc;
+  --color-gray-400: #75756d;
+  --color-gray-500: #5f5f58;
+  --color-gray-600: #4a4a44;
+  --color-gray-700: #34342f;
+  --color-gray-800: #24241f;
+  --color-gray-900: #14130f;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
-@keyframes fade-up {
+/* Superficies del navegador que también llevan diseño */
+::selection {
+  background: var(--obra);
+  color: var(--asfalto);
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--asfalto);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.on-dark :where(a, button):focus-visible,
+.on-dark:where(a, button):focus-visible {
+  outline-color: var(--obra);
+}
+
+input,
+textarea,
+select {
+  caret-color: var(--asfalto);
+  accent-color: var(--asfalto);
+}
+
+html {
+  scrollbar-color: #8f8f86 var(--hormigon);
+}
+
+.font-display {
+  font-family: var(--font-bigshoulders), "Arial Narrow", sans-serif;
+  letter-spacing: 0.005em;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ───────── Cinta de obra ───────── */
+.cinta {
+  height: 14px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--obra) 0 14px,
+    var(--asfalto) 14px 28px
+  );
+}
+
+/* ───────── Botones ─────────
+   Respuesta inmediata al pulsar (scale .97), transición solo de lo necesario. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0 1.5rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 200ms var(--ease-out);
+}
+.btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-sm {
+  min-height: 40px;
+  padding: 0 1.1rem;
+  font-size: 0.875rem;
+}
+.btn-yellow {
+  background: var(--obra);
+  color: var(--asfalto);
+  box-shadow: 0 1px 0 rgb(20 19 15 / 0.2), 0 6px 14px -6px rgb(20 19 15 / 0.35);
+}
+.btn-dark {
+  background: var(--asfalto);
+  color: #fff;
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.3), 0 6px 14px -6px rgb(20 19 15 / 0.5);
+}
+.btn-line {
+  background: transparent;
+  color: var(--asfalto);
+  border-color: var(--asfalto);
+}
+.btn-line-light {
+  background: transparent;
+  color: #fff;
+  border-color: rgb(255 255 255 / 0.55);
+}
+.btn .flecha {
+  transition: transform 200ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-yellow:hover:not(:disabled) {
+    background: var(--obra-hover);
+  }
+  .btn-dark:hover:not(:disabled) {
+    background: #2a2923;
+  }
+  .btn-line:hover:not(:disabled) {
+    background: var(--asfalto);
+    color: #fff;
+  }
+  .btn-line-light:hover:not(:disabled) {
+    background: #fff;
+    color: var(--asfalto);
+    border-color: #fff;
+  }
+  .btn:hover .flecha {
+    transform: translateX(3px);
+  }
+}
+
+/* ───────── Campos de formulario ───────── */
+.campo {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 10px;
+  border: 2px solid var(--color-gray-300);
+  background: #fff;
+  padding: 0.65rem 0.9rem;
+  font-size: 1rem; /* 16px: sin zoom en iOS */
+  color: var(--asfalto);
+  transition: border-color 150ms ease, box-shadow 200ms var(--ease-out);
+}
+.campo::placeholder {
+  color: var(--color-gray-400);
+}
+.campo:focus {
+  outline: none;
+  border-color: var(--asfalto);
+  box-shadow: 0 0 0 4px rgb(255 203 5 / 0.55);
+}
+textarea.campo {
+  min-height: 112px;
+}
+
+/* ───────── Chips de filtro ───────── */
+.chip {
+  min-height: 40px;
+  padding: 0 1rem;
+  border-radius: 999px;
+  border: 2px solid var(--color-gray-300);
+  background: #fff;
+  color: var(--color-gray-700);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 140ms var(--ease-out),
+    background-color 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease;
+}
+.chip:active {
+  transform: scale(0.96);
+}
+.chip[aria-pressed="true"] {
+  background: var(--asfalto);
+  border-color: var(--asfalto);
+  color: var(--obra);
+}
+@media (hover: hover) and (pointer: fine) {
+  .chip[aria-pressed="false"]:hover {
+    border-color: var(--asfalto);
+  }
+}
+
+/* ───────── Ficha de oferta ───────── */
+.ficha {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 14px;
+  box-shadow: 0 1px 0 rgb(20 19 15 / 0.04), 0 10px 24px -16px rgb(20 19 15 / 0.35);
+  transition:
+    transform 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out),
+    border-color 160ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .ficha-link:hover {
+    transform: translateY(-2px);
+    border-color: var(--asfalto);
+    box-shadow: 0 1px 0 rgb(20 19 15 / 0.06), 0 18px 32px -18px rgb(20 19 15 / 0.5);
+  }
+  .ficha-link:hover .ver {
+    background: var(--obra);
+  }
+  .ficha-link:hover .flecha {
+    transform: translateX(3px);
+  }
+}
+.ficha-link:active {
+  transform: scale(0.995);
+}
+.ficha .flecha {
+  transition: transform 200ms var(--ease-out);
+}
+
+/* ───────── Movimiento ───────── */
+@keyframes entra {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(14px);
+    filter: blur(4px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
+.entra {
+  animation: entra 620ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+/* Apilado corto para listas: nunca bloquea la interacción */
+.lista-entra > * {
+  animation: entra 420ms var(--ease-out) both;
+  animation-delay: calc(min(var(--i, 0), 8) * 40ms);
+}
 
-.animate-fade-up {
-  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+@keyframes cinta-corre {
+  to {
+    background-position: 56px 0;
+  }
+}
+.cinta-viva {
+  background-size: 56px 56px;
+  animation: cinta-corre 2.4s linear infinite;
+}
+
+/* Menú móvil: sale desde la cabecera, no desde el centro */
+.menu-movil {
+  transform-origin: top;
+  transition:
+    opacity 180ms var(--ease-out),
+    transform 220ms var(--ease-out),
+    visibility 0s linear 220ms;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.98);
+  visibility: hidden;
+}
+.menu-movil[data-open="true"] {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .entra,
+  .lista-entra > * {
+    animation: fade-simple 200ms ease both;
+    animation-delay: 0s;
+  }
+  .cinta-viva {
+    animation: none;
+  }
+  .btn,
+  .chip,
+  .ficha,
+  .btn .flecha,
+  .ficha .flecha {
+    transition-property: background-color, color, border-color;
+  }
+  .btn:active:not(:disabled),
+  .chip:active {
+    transform: none;
+  }
+  .menu-movil {
+    transform: none;
+  }
+}
+@keyframes fade-simple {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

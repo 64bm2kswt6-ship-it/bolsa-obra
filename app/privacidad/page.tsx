@@ -5,7 +5,7 @@ type Fila = [string, string];
 function Bloque({ titulo, filas }: { titulo: string; filas: Fila[] }) {
   return (
     <div className="overflow-hidden rounded-lg border border-gray-200">
-      <div className="bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white">
+      <div className="bg-obra px-4 py-2.5 text-sm font-bold text-asfalto">
         {titulo}
       </div>
       <dl>
@@ -27,8 +27,8 @@ function Bloque({ titulo, filas }: { titulo: string; filas: Fila[] }) {
 
 export default function Privacidad() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-12">
-      <h1 className="text-3xl font-bold text-gray-900">Política de Privacidad</h1>
+    <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:py-14">
+      <h1 className="font-display text-5xl font-black uppercase leading-none sm:text-6xl">Política de Privacidad</h1>
       <p className="mt-2 text-sm text-gray-500">
         Última actualización: septiembre de 2026
       </p>
