@@ -22,6 +22,7 @@ export async function crearOferta(
   const descripcion = campo(formData, "descripcion");
   const poblacion = campo(formData, "poblacion");
   const provincia = campo(formData, "provincia");
+  const direccion = campo(formData, "direccion");
   const fechaInicio = campo(formData, "fechaInicio");
   const tipoSalario = campo(formData, "tipoSalario");
   const numeroPuestos = Number(campo(formData, "numeroPuestos"));
@@ -57,6 +58,7 @@ export async function crearOferta(
       descripcion,
       poblacion,
       provincia,
+      direccion: direccion || null,
       fechaInicio: fechaInicioFecha,
       duracionDias,
       salario,

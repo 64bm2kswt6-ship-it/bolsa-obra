@@ -4,7 +4,7 @@ export default function AvisoLegal() {
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:py-14">
       <h1 className="font-display text-5xl font-black uppercase leading-none sm:text-6xl">Aviso Legal</h1>
-      <p className="mt-2 text-sm text-gray-500">Última actualización: septiembre de 2026</p>
+      <p className="mt-2 text-sm text-gray-500">Última actualización: octubre de 2026</p>
 
       <div className="mt-8 flex flex-col gap-6 text-gray-700 leading-relaxed">
         <section>
@@ -15,11 +15,16 @@ export default function AvisoLegal() {
             titular de este sitio web es:
           </p>
           <ul className="mt-2 list-disc pl-5">
-            <li>Responsable: <strong>Carlos Carmona Palet</strong></li>
-            <li>Domicilio: Calle Miguel Hernández, nº 1, 46800 Xàtiva (Valencia)</li>
+            <li>Titular: <strong>Carlos Carmona Palet</strong></li>
             <li>Correo de contacto: comven4@gmail.com</li>
             <li>Sitio web: bolsa-obra.vercel.app</li>
           </ul>
+          <p className="mt-2">
+            Bolsa Obra es un <strong>proyecto personal, gratuito y sin ánimo de
+            lucro</strong>. No incluye publicidad ni se obtienen ingresos de su uso.
+            Si en el futuro esto cambiara, se actualizarán estos datos
+            identificativos.
+          </p>
         </section>
 
         <section>
@@ -61,7 +66,16 @@ export default function AvisoLegal() {
         </section>
 
         <section>
-          <h2 className="font-display text-2xl font-extrabold uppercase">6. Legislación aplicable</h2>
+          <h2 className="font-display text-2xl font-extrabold uppercase">6. Enlaces y servicios de terceros</h2>
+          <p className="mt-2">
+            El sitio puede enlazar o integrar servicios de terceros, como Google
+            Maps para mostrar la ubicación de una oferta. Bolsa Obra no se
+            responsabiliza de sus contenidos ni de sus políticas.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-display text-2xl font-extrabold uppercase">7. Legislación aplicable</h2>
           <p className="mt-2">
             Este Aviso Legal se rige por la legislación española.
           </p>

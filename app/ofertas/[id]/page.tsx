@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { auth } from "@/auth";
 import { prisma } from "@/app/lib/prisma";
 import { SolicitarButton } from "./solicitar-button";
+import MapaOferta from "./MapaOferta";
 
 const formatoFecha = new Intl.DateTimeFormat("es-ES", { dateStyle: "medium" });
 const formatoMoneda = new Intl.NumberFormat("es-ES", {
@@ -19,7 +20,10 @@ const etiquetaTipoSalario: Record<string, string> = {
 export default async function OfertaDetallePage(props: PageProps<"/ofertas/[id]">) {
   const { id } = await props.params;
 
-  const oferta = await prisma.oferta.findUnique({ where: { id } });
+  const oferta = await prisma.oferta.findUnique({
+    where: { id },
+    include: { empresa: { select: { razonSocial: true } } },
+  });
   if (!oferta) {
     notFound();
   }
@@ -43,14 +47,16 @@ export default async function OfertaDetallePage(props: PageProps<"/ofertas/[id]"
   }
 
   // Evita consultas ambiguas tipo "Valencia, Valencia, España" (ciudad y
-  // provincia con el mismo nombre), que a veces hacen que el mapa apunte a
-  // un punto cercano en vez de al núcleo urbano.
+  // provincia con el mismo nombre). Si la empresa indicó una dirección, el
+  // mapa apunta a ese punto concreto; si no, al municipio.
   const mismaCiudadQueProvincia =
     oferta.poblacion.trim().toLowerCase() === oferta.provincia.trim().toLowerCase();
-  const ubicacionTexto = mismaCiudadQueProvincia
-    ? `${oferta.poblacion}, España`
-    : `${oferta.poblacion}, ${oferta.provincia}, España`;
-  const ubicacionQuery = encodeURIComponent(ubicacionTexto);
+  const zona = mismaCiudadQueProvincia
+    ? oferta.poblacion
+    : `${oferta.poblacion}, ${oferta.provincia}`;
+  const ubicacionTexto = oferta.direccion
+    ? `${oferta.direccion}, ${zona}, España`
+    : `${zona}, España`;
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:py-12">
@@ -110,29 +116,26 @@ export default async function OfertaDetallePage(props: PageProps<"/ofertas/[id]"
           <section className="mt-8">
             <h2 className="font-display text-2xl font-extrabold uppercase">Ubicación</h2>
             <p className="mt-1 text-base text-gray-700">
+              {oferta.direccion ? `${oferta.direccion} · ` : ""}
               {oferta.poblacion} ({oferta.provincia})
             </p>
-            <div className="mt-3 overflow-hidden rounded-xl border border-gray-300">
-              <iframe
-                title={`Mapa de ${oferta.poblacion}`}
-                src={`https://maps.google.com/maps?q=${ubicacionQuery}&z=12&output=embed`}
-                width="100%"
-                height="260"
-                loading="lazy"
-                style={{ border: 0 }}
+            <div className="mt-3">
+              <MapaOferta
+                consulta={ubicacionTexto}
+                nombreLugar={oferta.poblacion}
               />
             </div>
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${ubicacionQuery}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-flex min-h-10 items-center text-sm font-semibold underline decoration-2 underline-offset-4 hover:decoration-obra"
-            >
-              Abrir en Google Maps
-            </a>
           </section>
 
-          <div className="mt-8 border-t border-gray-300 pt-7">
+          <section className="mt-8 border-t border-gray-300 pt-7">
+            <h2 className="font-display text-2xl font-extrabold uppercase">Publicada por</h2>
+            <p className="mt-1 text-lg font-bold">{oferta.empresa.razonSocial}</p>
+            <p className="text-sm text-gray-600">
+              Publicada el {formatoFecha.format(oferta.publicadaEn)}
+            </p>
+          </section>
+
+          <div className="mt-7 border-t border-gray-300 pt-7">
             {!session?.user ? (
               <p className="text-base text-gray-700">
                 <Link

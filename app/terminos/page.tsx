@@ -7,7 +7,7 @@ export default function Terminos() {
         Términos y Condiciones de Uso
       </h1>
       <p className="mt-2 text-sm text-gray-500">
-        Última actualización: septiembre de 2026
+        Última actualización: octubre de 2026
       </p>
 
       <div className="mt-8 flex flex-col gap-7 leading-relaxed text-gray-700">

@@ -84,6 +84,7 @@ model Oferta {
   descripcion   String
   poblacion     String
   provincia     String
+  direccion     String?
   fechaInicio   DateTime
   duracionDias  Int
   salario       Decimal      @db.Decimal(10, 2)

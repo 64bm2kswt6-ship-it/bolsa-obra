@@ -30,7 +30,7 @@ export default function Privacidad() {
     <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:py-14">
       <h1 className="font-display text-5xl font-black uppercase leading-none sm:text-6xl">Política de Privacidad</h1>
       <p className="mt-2 text-sm text-gray-500">
-        Última actualización: septiembre de 2026
+        Última actualización: octubre de 2026
       </p>
 
       <div className="mt-8 flex flex-col gap-8 leading-relaxed text-gray-700">
@@ -53,7 +53,7 @@ export default function Privacidad() {
             <Bloque
               titulo="Responsable"
               filas={[
-                ["Titular", "Carlos Carmona Palet"],
+                ["Titular", "Carlos Carmona Palet (proyecto personal, sin ánimo de lucro)"],
                 ["Correo de contacto", "comven4@gmail.com"],
                 ["Sitio web", "bolsa-obra.vercel.app"],
               ]}
@@ -103,7 +103,7 @@ export default function Privacidad() {
             <Bloque
               titulo="Ofertas publicadas"
               filas={[
-                ["¿Qué recopilamos?", "El contenido de cada oferta: título, oficio, descripción, ubicación, fechas, salario y número de puestos."],
+                ["¿Qué recopilamos?", "El contenido de cada oferta: título, oficio, descripción, ubicación (incluida la dirección de la obra si la empresa la indica), fechas, salario y número de puestos."],
                 ["¿Cómo lo utilizamos?", "Para mostrar las ofertas de forma pública en el tablón, de modo que los trabajadores puedan encontrarlas y solicitarlas."],
                 ["Base legal", "La ejecución del servicio prestado a la empresa."],
                 ["Periodo de retención", "Mientras la oferta esté activa o hasta que la empresa la cierre o la elimine."],
@@ -133,10 +133,10 @@ export default function Privacidad() {
             <Bloque
               titulo="Datos técnicos"
               filas={[
-                ["¿Qué recopilamos?", "Una cookie técnica necesaria para mantener tu sesión iniciada."],
-                ["¿Cómo lo utilizamos?", "Únicamente para que no tengas que iniciar sesión en cada página."],
+                ["¿Qué recopilamos?", "Cookies técnicas necesarias para mantener tu sesión iniciada y, como en cualquier sitio web, la dirección IP y datos básicos de la conexión que registra el servidor de alojamiento al servirte las páginas."],
+                ["¿Cómo lo utilizamos?", "Para que no tengas que iniciar sesión en cada página, y para la seguridad y el correcto funcionamiento del servicio."],
                 ["Base legal", "Interés legítimo y necesidad técnica (las cookies estrictamente necesarias están exentas de consentimiento)."],
-                ["Periodo de retención", "La duración de la sesión."],
+                ["Periodo de retención", "Las cookies, hasta 30 días (ver Política de Cookies). Los registros del servidor, el tiempo breve que fije el proveedor."],
               ]}
             />
           </div>
@@ -154,15 +154,34 @@ export default function Privacidad() {
             </li>
             <li>
               <strong>Con proveedores tecnológicos (encargados del tratamiento):</strong>{" "}
-              utilizamos servicios que hacen funcionar la web: alojamiento y
-              despliegue, base de datos y envío de correos. Solo tratan los datos
-              siguiendo nuestras instrucciones.
+              Vercel Inc. (alojamiento y despliegue de la web), Neon (base de datos,
+              alojada en la Unión Europea, región de Fráncfort) y Resend (envío de
+              correos electrónicos). Solo tratan los datos siguiendo nuestras
+              instrucciones.
+            </li>
+            <li>
+              <strong>Google Maps:</strong> solo si pulsas «Mostrar mapa» en una
+              oferta; en ese caso Google recibe tu IP y puede usar cookies (ver
+              Política de Cookies).
             </li>
             <li>
               <strong>No vendemos ni cedemos</strong> tus datos a terceros con fines
               comerciales.
             </li>
           </ul>
+          <p className="mt-3">
+            <strong>Las empresas son responsables independientes:</strong> una vez
+            que una empresa recibe los datos de un candidato, los trata ella como
+            responsable propio, con sus propias obligaciones de protección de
+            datos. Bolsa Obra no controla ese uso posterior.
+          </p>
+          <p className="mt-3">
+            <strong>Transferencias internacionales:</strong> algunos proveedores
+            (Vercel y Resend) pueden tratar datos fuera del Espacio Económico
+            Europeo, en particular en Estados Unidos. En esos casos se apoyan en
+            garantías previstas en el RGPD, como el Marco de Privacidad de Datos UE-EE. UU.
+            o las cláusulas contractuales tipo de la Comisión Europea.
+          </p>
         </section>
 
         <section>

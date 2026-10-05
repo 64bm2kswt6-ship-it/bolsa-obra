@@ -9,11 +9,15 @@ function Campo({
   id,
   label,
   type = "text",
+  required = true,
+  ayuda,
   ...props
 }: {
   id: string;
   label: string;
   type?: string;
+  required?: boolean;
+  ayuda?: string;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "id" | "name" | "type">) {
   return (
     <div className="flex flex-col gap-1">
@@ -24,10 +28,11 @@ function Campo({
         id={id}
         name={id}
         type={type}
-        required
+        required={required}
         className="campo"
         {...props}
       />
+      {ayuda && <span className="text-sm text-gray-600">{ayuda}</span>}
     </div>
   );
 }
@@ -62,6 +67,13 @@ export function NuevaOfertaForm() {
 
       <Campo id="poblacion" label="Población" />
       <Campo id="provincia" label="Provincia" />
+      <Campo
+        id="direccion"
+        label="Dirección de la obra (opcional)"
+        required={false}
+        placeholder="Calle, número o polígono"
+        ayuda="Si la pones, el mapa de la oferta señalará el lugar exacto."
+      />
       <Campo id="fechaInicio" label="Fecha de inicio" type="date" />
       <Campo
         id="duracionDias"

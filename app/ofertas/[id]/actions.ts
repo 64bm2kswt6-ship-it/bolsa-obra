@@ -6,6 +6,14 @@ import { auth } from "@/auth";
 import { prisma } from "@/app/lib/prisma";
 import { Prisma } from "@/app/generated/prisma/client";
 
+function esc(valor: string | number) {
+  return String(valor)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 export type SolicitarState = { error: string } | { success: true } | undefined;
 
 export async function solicitarOferta(
@@ -61,14 +69,14 @@ export async function solicitarOferta(
         html: `
           <div style="font-family: Arial, Helvetica, sans-serif; color: #141414; line-height: 1.6;">
             <h2 style="margin:0 0 8px;">Tienes una nueva solicitud en Bolsa Obra</h2>
-            <p>Un trabajador ha solicitado tu oferta <strong>${oferta.titulo}</strong>.</p>
+            <p>Un trabajador ha solicitado tu oferta <strong>${esc(oferta.titulo)}</strong>.</p>
             <p style="margin:16px 0 4px;"><strong>Datos del candidato:</strong></p>
             <ul style="margin:0 0 16px; padding-left:18px;">
-              <li>Nombre: ${perfil.nombre} ${perfil.apellidos}</li>
-              <li>Oficio: ${perfil.oficioPrincipal}</li>
-              <li>Experiencia: ${perfil.aniosExperiencia} años</li>
-              <li>Teléfono: ${perfil.telefono}</li>
-              <li>Zona: ${perfil.poblacion} (${perfil.provincia})</li>
+              <li>Nombre: ${esc(perfil.nombre)} ${esc(perfil.apellidos)}</li>
+              <li>Oficio: ${esc(perfil.oficioPrincipal)}</li>
+              <li>Experiencia: ${esc(perfil.aniosExperiencia)} años</li>
+              <li>Teléfono: ${esc(perfil.telefono)}</li>
+              <li>Zona: ${esc(perfil.poblacion)} (${esc(perfil.provincia)})</li>
             </ul>
             <p>
               <a href="https://bolsa-obra.vercel.app/empresa/ofertas/${ofertaId}"
