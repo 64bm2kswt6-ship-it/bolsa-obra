@@ -63,7 +63,7 @@ export async function solicitarOferta(
     try {
       const resend = new Resend(process.env.RESEND_API_KEY);
       await resend.emails.send({
-        from: "Bolsa Obra <onboarding@resend.dev>",
+        from: process.env.RESEND_FROM ?? "Bolsa Obra <onboarding@resend.dev>",
         to: oferta.empresa.usuario.email,
         subject: `Nueva solicitud: ${oferta.titulo}`,
         html: `
@@ -79,7 +79,7 @@ export async function solicitarOferta(
               <li>Zona: ${esc(perfil.poblacion)} (${esc(perfil.provincia)})</li>
             </ul>
             <p>
-              <a href="https://bolsa-obra.vercel.app/empresa/ofertas/${ofertaId}"
+              <a href="${process.env.NEXT_PUBLIC_SITE_URL ?? "https://bolsaobra.com"}/empresa/ofertas/${ofertaId}"
                  style="display:inline-block; background:#141414; color:#fff; text-decoration:none; padding:10px 18px; border-radius:6px;">
                 Ver candidatos
               </a>

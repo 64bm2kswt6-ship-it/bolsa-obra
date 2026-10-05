@@ -17,7 +17,7 @@ export default function AvisoLegal() {
           <ul className="mt-2 list-disc pl-5">
             <li>Titular: <strong>Carlos Carmona Palet</strong></li>
             <li>Correo de contacto: comven4@gmail.com</li>
-            <li>Sitio web: bolsa-obra.vercel.app</li>
+            <li>Sitio web: bolsaobra.com</li>
           </ul>
           <p className="mt-2">
             Bolsa Obra es un <strong>proyecto personal, gratuito y sin ánimo de

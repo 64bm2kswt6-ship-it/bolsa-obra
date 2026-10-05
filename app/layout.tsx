@@ -18,7 +18,8 @@ const bigShoulders = Big_Shoulders({
   adjustFontFallback: false,
 });
 
-const SITE_URL = "https://bolsa-obra.vercel.app";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://bolsaobra.com";
 const SITE_TITLE = "Bolsa Obra";
 const SITE_DESCRIPTION =
   "La bolsa de trabajo del sector de la construcción: conecta empresas y trabajadores del oficio. Publica tu obra o encuentra la tuya.";

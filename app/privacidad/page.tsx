@@ -55,7 +55,7 @@ export default function Privacidad() {
               filas={[
                 ["Titular", "Carlos Carmona Palet (proyecto personal, sin ánimo de lucro)"],
                 ["Correo de contacto", "comven4@gmail.com"],
-                ["Sitio web", "bolsa-obra.vercel.app"],
+                ["Sitio web", "bolsaobra.com"],
               ]}
             />
           </div>
